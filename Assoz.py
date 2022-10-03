@@ -1,6 +1,5 @@
-import os, random, subprocess, platform
+import os, random,threading
 try:
-    import threading
     import requests
     from pystyle import *
     from fake_useragent import UserAgent
@@ -21,9 +20,6 @@ except(ModuleNotFoundError):
             )
         )
     )
-def Clear():
-    subprocess.Popen( "cls" if platform.system() == "Windows" else "clear", shell=True)
-Clear()
 proxies = []
 
 time = int(input
@@ -87,8 +83,7 @@ def spam(proxies):
         else:
             pass
     
-    Clear()
-    os.system('title Grabify Spammer / Made by PLATIPUS#2535 Spam Is Over')
+    os.system('cls&&title Grabify Spammer / Made by PLATIPUS#2535 Spam Is Over')
     (input
     (Center.XCenter
         (Colorate.Vertical
