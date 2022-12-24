@@ -1,5 +1,5 @@
 # ASSOZ
-ASSOZ is a grabify link spammer who use proxies to spam
+ASSOZ is an iplogger link spammer who use proxies to spam
 
 ### Usage
 
