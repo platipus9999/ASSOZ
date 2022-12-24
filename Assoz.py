@@ -1,105 +1,65 @@
-import os, random,threading
-try:
-    import requests
-    from pystyle import *
-    from fake_useragent import UserAgent
-except(ModuleNotFoundError):
-    (input
-        (Center.XCenter
-            (Colorate.Vertical
-                (Colors.purple_to_blue,"""
+from httpx import post
+from threading import Thread, Lock
+from random import choice
+from utils import *
+import os
 
- █████╗ ███████╗███████╗ ██████╗ ███████╗
-██╔══██╗██╔════╝██╔════╝██╔═══██╗╚══███╔╝
-███████║███████╗███████╗██║   ██║  ███╔╝ 
-██╔══██║╚════██║╚════██║██║   ██║ ███╔╝  
-██║  ██║███████║███████║╚██████╔╝███████╗
-╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝
- Install all package in requirements.txt"""
-                )
-            )
-        )
-    )
-proxies = []
+def major():
+    Clear()
+    Title("Nows@Platipus ~ Link_Fucker $")
+    print(Vertical.yellow_to_red("""
+                 █████  ███████ ███████  ██████  ███████ 
+                ██   ██    ███     ███  ██    ██    ███  
+                ███████   ███     ███   ██    ██   ███   
+                ██   ██  ███     ███    ██    ██  ███    
+                ██   ██ ███████ ███████  ██████  ███████
+                 
+                        [Ip Logger links fucker]
+"""))
+    th_lock = Lock()
+    url = input(Horizontal.yellow_to_red("Link to spam > "))
+    proxy = input(Horizontal.yellow_to_red("Drag your proxies file > "))
+    file_name = (os.path.splitext(proxy)[0].split("\\"))[-1] + os.path.splitext(proxy)[1]
 
-time = int(input
-(Center.XCenter
-    (Colorate.Vertical
-        (Colors.purple_to_blue,"""
+    Title(f"Nows@Platipus ~ Link_Fucker $ [ Using {file_name} As Proxies List ]")
+    return url, proxy, th_lock, 
 
- █████╗ ███████╗███████╗ ██████╗ ███████╗
-██╔══██╗██╔════╝██╔════╝██╔═══██╗╚══███╔╝
-███████║███████╗███████╗██║   ██║  ███╔╝ 
-██╔══██║╚════██║╚════██║██║   ██║ ███╔╝  
-██║  ██║███████║███████║╚██████╔╝███████╗
-╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝
-      Assoz -> Grabify link Spammer          
-         Made by PLATIPUS#2535                                        
-                                        
-How much spam > """
-        )
-    )
-))
-url = input(Center.XCenter(Colorate.Horizontal(Colors.purple_to_blue,"Url To Spam > ")))
-if not os.path.exists("proxies.txt"):
-    input(Center.XCenter(Colorate.Vertical(Colors.purple_to_blue,"""
+_return = major()
+hit = 0
+fail = 0
 
- █████╗ ███████╗███████╗ ██████╗ ███████╗
-██╔══██╗██╔════╝██╔════╝██╔═══██╗╚══███╔╝
-███████║███████╗███████╗██║   ██║  ███╔╝ 
-██╔══██║╚════██║╚════██║██║   ██║ ███╔╝  
-██║  ██║███████║███████║╚██████╔╝███████╗
-╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝
-File proxies.txt doesn't exists, create one !""")))
+class Setup:
+    def proxy_list():
+        with open(_return[1], "r+")as f:
+            pro = choice(f.readlines())
+            f.close()
+            return pro
 
-    exit()
-with open("proxies.txt", "r", encoding = "UTF-8") as f:
-    for line in f.readlines():
-        line = line.replace("\n", "")
-        proxies.append(line)
-            
-    if not len(proxies):
-        input("\nNo proxies loaded in proxies.txt")
-        exit()
-def spam(proxies):
-    hit = 0        
-    while time != hit:
 
-        headers = {
-            'authority': 'grabify.link',
-            'user-agent': UserAgent().random,
-        }
 
+def fuck_link():
+    for _ in range(100):
+        global hit, fail
 
         try:
-            req = requests.get(url, headers=headers, proxies=random.choice(proxies))
-            print(f"Successfully Spammed at {url} | Proxy used: {proxies}")
-        except:
-            req = requests.get("https://wrongurltoskip.com")
-
-        if req.status_code == 200:
+            post(_return[0],headers={'user-agent': "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.26 Safari/537.11"}, proxies={"http://": "http://"+Setup.proxy_list(), "https://": "http://"+Setup.proxy_list()})
+            _return[-1].acquire()
             hit += 1
-            os.system(f'title Grabify Spammer / Made by PLATIPUS#2535 Hit: {hit}')
-        else:
-            pass
-    
-    os.system('cls&&title Grabify Spammer / Made by PLATIPUS#2535 Spam Is Over')
-    (input
-    (Center.XCenter
-        (Colorate.Vertical
-            (Colors.purple_to_blue,"""
+            _return[-1].release()
+        except:
+            _return[-1].acquire()
+            fail += 1
+            _return[-1].release()  
 
- █████╗ ███████╗███████╗ ██████╗ ███████╗
-██╔══██╗██╔════╝██╔════╝██╔═══██╗╚══███╔╝
-███████║███████╗███████╗██║   ██║  ███╔╝ 
-██╔══██║╚════██║╚════██║██║   ██║ ███╔╝  
-██║  ██║███████║███████║╚██████╔╝███████╗
-╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝
-    Assoz -> Grabify link Spammer          
-        Made by PLATIPUS#2535"""
-            )
-        )
-    ))
+class main:
+    print("\n")
+    for _ in range(int(10000)):
+        Thread(target=fuck_link).start()
+        print(Horizontal.yellow_to_red(f"[+] Link: {_return[0]} | Hit: {hit} | Fail: {fail}"), end="\r")
+
+    print(Vertical.yellow_to_red("\n\n[!] Finished "), end="\r")
+    input()
+
 if __name__ == '__main__':
-    for i in range(time):
-        threading.Thread(target=spam()).start()
+    os.system('')
+    main()
