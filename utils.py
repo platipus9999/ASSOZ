@@ -26,8 +26,8 @@ class Horizontal:
     def yellow_to_red(text: str): 
         col = ""
         green = 250
-        for line in [*text]:
-            col += (f"\033[38;2;255;{green};0m{line}\033[0m")
+        for letters in [*text]:
+            col += (f"\033[38;2;255;{green};0m{letters}\033[0m")
             if not green == 0:
                 green -= 7
                 if green < 0:
