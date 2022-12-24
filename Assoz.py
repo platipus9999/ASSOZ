@@ -57,7 +57,7 @@ class main:
         Thread(target=fuck_link).start()
         print(Horizontal.yellow_to_red(f"[+] Link: {_return[0]} | Hit: {hit} | Fail: {fail}"), end="\r")
 
-    print(Vertical.yellow_to_red("\n\n[!] Finished "), end="\r")
+    print(Vertical.yellow_to_red("\n\n[-] Done !"), end="\r")
     input()
 
 if __name__ == '__main__':
