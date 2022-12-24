@@ -1,3 +1,1 @@
-pystyle
-requests
-fake_useragent
+httpx
