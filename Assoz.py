@@ -31,9 +31,9 @@ fail = 0
 class Setup:
     def proxy_list():
         with open(_return[1], "r+")as f:
-            pro = choice(f.readlines())
+            proxies = choice(f.readlines())
             f.close()
-            return pro
+            return proxies
 
 
 
